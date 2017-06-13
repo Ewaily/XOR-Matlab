@@ -1,0 +1,78 @@
+Trial>> P = [0 0 1 1; 
+     0 1 0 1]; 
+T1 = [0 1 0 0]; 
+T2 = [0 0 1 0]; 
+T3 = [0 1 1 1];
+y=newp(P,T1);
+y.trainParam.epochs =1000;
+y.iw{1,1} = rand(1,2);
+y.b{1} = rand(1);
+y = train(y,P,T1);
+Trial>> 
+Trial>> output1 = sim(y,P)
+
+output1 =
+
+     0     1     0     0
+
+Trial>> w = y.iw{1,1}
+
+w =
+
+   -1.0866    1.6324
+
+Trial>> b = y.b{1}
+
+
+b =
+
+   -0.9025
+
+Trial>> y=newp(P,T2);
+y.trainParam.epochs =1000;
+y.iw{1,1} = rand(1,2);
+y.b{1} = rand(1);
+y = train(y,P,T2);
+Trial>> output2 = sim(y,P)
+
+output2 =
+
+     0     0     1     0
+
+Trial>> w = y.iw{1,1}
+
+w =
+
+    1.2785   -1.4531
+
+Trial>> b = y.b{1}
+
+b =
+
+   -0.0425
+
+Trial>> P2 = [output1;output2];
+ y=newp(P,T3);
+y.trainParam.epochs =1000;
+y.iw{1,1} = rand(1,2);
+y.b{1} = rand(1);
+y = train(y,P,T3);
+Trial>> output3 = sim(y,P)
+
+output3 =
+
+     0     1     1     1
+
+Trial>> w = y.iw{1,1}
+
+w =
+
+    0.9649    0.1576
+
+Trial>> b = y.b{1}
+
+b =
+
+   -0.0294
+
+Trial>> 
